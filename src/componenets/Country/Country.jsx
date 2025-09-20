@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Country.css'
 
-const Country = ({ country }) => {
+const Country = ({ country, handleVisistedCountries}) => {
+    const [visited, setVisited] = useState(false)
+    // console.log('handle click visit')
     //  console.log(country.flags.flags.png)
     // console.log(country.name.common)
     // console.log(country.population.population)
@@ -9,11 +11,28 @@ const Country = ({ country }) => {
     // console.log(country.region.region)
     // console.log(country.area.area)
     const handleVisisted = () => {
-        console.log('btn clicked')
+        // // setVisited(true)
+
+        //condition  system
+
+        // if (visited) {
+        //     setVisited(false)
+        // }
+        // else {
+        //     setVisited(true)
+        // }
+
+        //ternery system
+        // setVisited(visited ? false : true);
+
+        //logical not operator system
+        setVisited(!visited)
+
+        handleVisistedCountries(country)
     }
 
     return (
-        <div className='country'>
+        <div className={`country ${visited && 'country-visited'}`}>
             <img src={country.flags.flags.png} alt={country.flags.flags.alt} />
             <h3>Name: {country.name.common}</h3>
             <p>Capital: {country.capital.capital}</p>
@@ -24,7 +43,10 @@ const Country = ({ country }) => {
                 ? "  - Big Country " : '- Small Country'}</p>
 
 
-            <button className='BtnVisitCheck' onClick={handleVisisted}>Not Visited</button>
+            <button className='BtnVisitCheck' onClick={handleVisisted}>
+                {visited ? 'Visited' : 'Not Visited'}
+            </button>
+
         </div>
     );
 };
