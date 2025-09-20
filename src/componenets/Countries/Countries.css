@@ -10,5 +10,11 @@
     background-color: cornflowerblue;
     cursor: pointer;
     color: white;
-    
+
+}
+
+
+.visited-flags-container img{
+width: 120px;
+margin-right: 10px;
 }
